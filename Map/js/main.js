@@ -11,6 +11,8 @@ BasicGame.Boot.prototype =
     preload: function () {
         game.load.image('stone', 'images/stone-reduce.png');
         game.load.image('grass', 'images/grass-reduce.png');
+        game.load.image('sand', 'images/sand-reduce.png');
+        game.load.image('water', 'images/water-reduce.png');
 
         game.time.advancedTiming = true;
 
@@ -63,11 +65,52 @@ BasicGame.Boot.prototype =
     },
     spawnTiles: function () {
         var tile;
-        for (var xx = 0; xx < 496; xx += 45/2) {
-          for(var yy = 0; yy < 496; yy +=45/2){
-            tile = game.add.isoSprite(xx, yy, 0, 'stone', 0, isoGroup);
-            tile.anchor.set(0.5, 0);
-          }
+        //ligne 1 ( yy = 0 )
+        for (var xx = 0; xx < 292.5; xx += 45/2){
+          tile = game.add.isoSprite(xx, 0, 0, 'stone', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 292.5; xx < 405; xx += 45/2){
+          tile = game.add.isoSprite(xx, 0, 0, 'grass', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 405; xx < 495; xx += 45/2){
+          tile = game.add.isoSprite(xx, 0, 0, 'stone', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        //ligne 2 ( yy = 45/2 )
+        for (var xx = 0; xx < 292.5; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45/2, 0, 'stone', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 292.5; xx < 427.5; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45/2, 0, 'grass', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 427.5; xx < 495; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45/2, 0, 'stone', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        //ligne 3 ( yy = 45 )
+        for (var xx = 0; xx < 67.5; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45, 0, 'stone', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 67.5; xx < 135; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45, 0, 'grass', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 135; xx < 292.5; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45, 0, 'stone', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 292.5; xx < 427.5; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45, 0, 'grass', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
+        }
+        for (var xx = 427.5; xx < 495; xx += 45/2){
+          tile = game.add.isoSprite(xx, 45, 0, 'stone', 0, isoGroup);
+          tile.anchor.set(0.5, 0);
         }
     }
 };
