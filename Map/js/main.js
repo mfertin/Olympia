@@ -9,7 +9,8 @@ var isoGroup, cursorPos, cursor;
 BasicGame.Boot.prototype =
 {
     preload: function () {
-        game.load.image('tile', 'images/tile.png');
+        game.load.image('stone', 'images/stone-reduce.png');
+        game.load.image('grass', 'images/grass-reduce.png');
 
         game.time.advancedTiming = true;
 
@@ -62,13 +63,11 @@ BasicGame.Boot.prototype =
     },
     spawnTiles: function () {
         var tile;
-        for (var xx = 0; xx < 2*256; xx += 38) {
-            for (var yy = 0; yy < 2*256; yy += 38) {
-                // Create a tile using the new game.add.isoSprite factory method at the specified position.
-                // The last parameter is the group you want to add it to (just like game.add.sprite)
-                tile = game.add.isoSprite(xx, yy, 0, 'tile', 0, isoGroup);
-                tile.anchor.set(0.5, 0);
-            }
+        for (var xx = 0; xx < 496; xx += 45/2) {
+          for(var yy = 0; yy < 496; yy +=45/2){
+            tile = game.add.isoSprite(xx, yy, 0, 'stone', 0, isoGroup);
+            tile.anchor.set(0.5, 0);
+          }
         }
     }
 };
