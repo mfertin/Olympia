@@ -4,15 +4,21 @@ var BasicGame = function (game) { };
 
 BasicGame.Boot = function (game) { };
 
-var isoGroup, cursorPos, cursor;
+var isoGroup, obstacleGroup, cursorPos, cursor, tile;
 
 BasicGame.Boot.prototype =
 {
     preload: function () {
+        /*game.load.tilemap('map-lvl1', '/images/map-lvl1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('tiles', 'images/tmw_desert_spacing.png');*/
+
         game.load.image('stone', 'images/stone-reduce.png');
         game.load.image('grass', 'images/grass-reduce.png');
         game.load.image('sand', 'images/sand-reduce.png');
         game.load.image('water', 'images/water-reduce.png');
+        game.load.image('rouge', 'images/rouge.png');
+
+        game.load.spritesheet('characterAnim','images/sprite_3_4_avant_gauche.png', 70, 75);
 
         game.time.advancedTiming = true;
 
@@ -21,14 +27,21 @@ BasicGame.Boot.prototype =
 
         // This is used to set a game canvas-based offset for the 0, 0, 0 isometric coordinate - by default
         // this point would be at screen coordinates 0, 0 (top left) which is usually undesirable.
-        game.iso.anchor.setTo(0.5, 0.2);
+        game.iso.anchor.setTo(0.5, 0);
 
 
     },
     create: function () {
-
         // Create a group for our tiles.
         isoGroup = game.add.group();
+        obstacleGroup = game.add.group();
+
+        /*var map = game.add.tilemap('map-lvl1');
+        map.addTilesetImage('Calque de Tile 1', 'tiles');
+        var layer = map.createLayer('Ground');*/
+
+        tile = game.add.sprite(0, 475, 'rouge');
+        //tile.anchor.set(0.5, 0);
 
         // Let's make a load of tiles on a grid.
         this.spawnTiles();
@@ -48,7 +61,7 @@ BasicGame.Boot.prototype =
             // If it does, do a little animation and tint change.
             if (!tile.selected && inBounds) {
                 tile.selected = true;
-                tile.tint = 0x86bfda;
+                tile.tint = 0xff1e22;
                 game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
             }
             // If not, revert back to how it was.
@@ -58,11 +71,13 @@ BasicGame.Boot.prototype =
                 game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
             }
         });
+        //Creste the player
+        player = game.add.isoSprite(350, 280, 0, 'characterAnim', 0, obstacleGroup);
     },
-    render: function () {
+    /*render: function () {
         game.debug.text("Move your mouse around!", 2, 36, "#ffffff");
         game.debug.text(game.time.fps || '--', 2, 14, "#a7aebe");
-    },
+    },*/
     spawnTiles: function () {
         var tile;
         //ligne 1 ( yy = 0 )
