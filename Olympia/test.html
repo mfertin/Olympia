@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Olympia</title>
+</head>
+<body>
+  <script type="text/javascript" src="game.js"></script>
+  <script type="text/javascript" src="level.js"></script>
+  <script type="text/javascript" src="cell.js"></script>
+	<script type="text/javascript" src="map.js"></script>
+  <script type="text/javascript" src="entity.js"></script>
+  <script type="text/javascript" src="character.js"></script>
+	<script type="text/javascript" src="magus.js"></script>
+	<script type="text/javascript" src="functions.js"></script>
+
+	<script type="text/javascript">
+		/***** HIERARCHIE DES CLASSES *****/
+		character.prototype = new entity;
+		magus.prototype = new character;
+
+
+		var partie = new game('Onyzer', 'Grec');
+
+		partie.map = new map(15, 15);
+
+		var Onyzer = new magus(100, 6, 3, 100, 'Onyzer', 'PGM', 10, 50);
+		var PA = new magus(100, 6, 3, 100, 'pierrealexyop$w4g', 'Noob', 10, 50);
+		var Mathieu = new magus(100, 6, 3, 100, 'matcoc', 'Noob', 10, 50);
+		var Adrien = new magus(100, 6, 3, 100, 'neirda', 'Noob', 10, 50);
+		moveEntityToCell(Onyzer, 2, 3);
+		moveEntityToCell(PA, 3, 3);
+		moveEntityToCell(Mathieu, 3, 4);
+		moveEntityToCell(Adrien, 3, 5);
+		Onyzer.spell1(partie.map.getCellByCoordinates(3,3));
+  </script>
+</body>

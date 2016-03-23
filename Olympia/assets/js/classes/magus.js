@@ -63,7 +63,7 @@ function magus(hp, ap, mp , init, name, faction, p_a, m_a) {
   }
 
 
-  this.spell4 = function(cell) {
+  this.spell4 = function.bind(this[,cell[])) {
     var target = cell.entity;
     if (target.targetable) {
       if (getDistance(this.cell,target.cell) <=4) {
