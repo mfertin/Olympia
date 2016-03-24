@@ -1,0 +1,44 @@
+{ "height":22,
+ "layers":[
+        {
+         "compression":"zlib",
+         "data":"eJy908EOwCAIA1Cm\/P8372RimiJFlh04LJGnYjfMbBTrIVU1VPdkq\/vfuJ6si8ysx8He12dmdhaHUt1sdsztmOzM+3fHZfdVzl3NKc4kmg\/2zq2+dNca9E\/ZUOaAfcy+ycJy0O7+YzOorouzPb1hxY5c1Y4yyvKA78f8LPssCywbHdctz4Zaf7lsnxv3Bcv7A\/g=",
+         "encoding":"base64",
+         "height":22,
+         "name":"Calque de Tile 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":22,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"isometric",
+ "properties":
+    {
+
+    },
+ "renderorder":"left-up",
+ "tileheight":18,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"tileset.png",
+         "imageheight":36,
+         "imagewidth":160,
+         "margin":0,
+         "name":"tileset",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tilecount":4,
+         "tileheight":36,
+         "tilewidth":40
+        }],
+ "tilewidth":40,
+ "version":1,
+ "width":22
+}
