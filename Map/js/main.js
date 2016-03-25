@@ -20,11 +20,11 @@ BasicGame.Boot.prototype =
         game.load.image('tableaudebord', 'images/tableaudebordprincipal.png');
         game.load.image('console', 'images/console.png');
 
-        //preloadbuttonarcher();
+        preloadbuttonarcher();
         //preloadbuttonassassin();
         //preloadbuttonmage();
         //preloadbuttonsoigneur();
-        preloadbuttontank();
+        //preloadbuttontank();
 
         game.load.spritesheet('characterAnim','images/sprite_3_4_avant_gauche.png', 70, 75);
 
@@ -40,6 +40,7 @@ BasicGame.Boot.prototype =
 
     },
     create: function () {
+
         // Create a group for our tiles.
         isoGroup = game.add.group();
         obstacleGroup = game.add.group();
@@ -52,11 +53,13 @@ BasicGame.Boot.prototype =
         tile = game.add.sprite(125, 475, 'tableaudebord');
         tile = game.add.sprite(616, 475, 'console');
 
-        //createbuttonarcher();
+        createbuttonarcher();
         //createbuttonassassin();
         //createbuttonmage();
         //createbuttonsoigneur();
-        createbuttontank();
+        //createbuttontank();
+        button1.onInputOver.add(over, this);
+        button1.onInputOut.add(out, this);
         
         //tile.anchor.set(0.5, 0);
 
@@ -563,11 +566,13 @@ function preloadbuttonarcher() {
   game.load.image('sort4arch', 'images/Icone_sort/Archer/Archer4.png');
 }
 
+var button1;
+
 function createbuttonarcher() {
-  game.add.button(185, 478, 'sort1arch', this.sort1, this);
-  game.add.button(290, 478, 'sort2arch', this.sort2, this);
-  game.add.button(395, 478, 'sort3arch', this.sort3, this);
-  game.add.button(500, 478, 'sort4arch', this.sort4, this);
+  button1 = game.add.button(185, 478, 'sort1arch', this.sort1, this);
+  var button2 = game.add.button(290, 478, 'sort2arch', this.sort2, this);
+  var button3 = game.add.button(395, 478, 'sort3arch', this.sort3, this);
+  var button4 = game.add.button(500, 478, 'sort4arch', this.sort4, this);
 }
 
 function preloadbuttonmage() {
@@ -624,6 +629,16 @@ function createbuttontank() {
   game.add.button(290, 478, 'sort2tan', this.sort2, this);
   game.add.button(395, 478, 'sort3tan', this.sort3, this);
   game.add.button(500, 478, 'sort4tan', this.sort4, this);
+}
+
+var text;
+
+function over(){
+   text = game.add.text(616, 475, "Description sort1", { font: "20px Arial", fill: "#ffffff"});
+}
+
+function out(){
+  text.destroy();
 }
 
 game.state.add('Boot', BasicGame.Boot);
