@@ -8,13 +8,17 @@ function heal(hp, ap, mp , init, name, faction, p_a, m_a) {
   this.spell1 = function(cell) {
     var target = cell.entity;
     if (target.targetable) {
-      if (getDistance(this.cell,cell) <=3) {
-        target.hp -= this.physical_attack;
-        this.ap -= 3;
-        console.log(target.name+ '(' + target.faction +  ') : - ' + this.physical_attack + ' HP.');
+      if (this.ap >= 3) {
+        if (getDistance(this.cell,cell) <=3) {
+          damage(target, this.physical_attack);
+          this.ap -= 3;
+        }
+        else {
+          console.log('La cible est trop éloignée.');
+        }
       }
       else {
-        console.log('La cible est trop éloignée.');
+        console.log('Vous n\'avez pas assez de PA pour cette action.');
       }
     }
     else {
@@ -28,19 +32,21 @@ function heal(hp, ap, mp , init, name, faction, p_a, m_a) {
   this.spell2 = function(cell) {
     var target = cell.entity;
     if (target.targetable) {
-      if (getDistance(this.cell,target.cell) <=4) {
-        target.hp += this.magical_attack;
-        this.ap -= 4;
-        this.hp -= this.magical_attack/2;
-        console.log(target.name+ '(' + target.faction +  ') : + ' + this.magical_attack + ' HP.');
-        if (target.burning > 0) {
-          target.burning = 0;
-          console.log(target.name+ '(' + target.faction + ') : Perd l\'effet Brûlure.');
+      if (this.ap >= 4) {
+        if (getDistance(this.cell,target.cell) <=4) {
+          addHP(target, this.magical_attack);
+          damage(this, this.magical_attack/2);
+          if (target.burning > 0) {
+            target.burning = 0;
+          }
+          this.ap -= 4;
         }
-        console.log(this.name+ '(' + this.faction +  ') : - ' + this.magical_attack/2 + ' HP.');
+        else {
+          console.log('La cible est trop éloignée.');
+        }
       }
       else {
-        console.log('La cible est trop éloignée.');
+        console.log('Vous n\'avez pas assez de PA pour cette action.');
       }
     }
     else {
@@ -50,17 +56,28 @@ function heal(hp, ap, mp , init, name, faction, p_a, m_a) {
 
 
   this.spell3 = function(cell) {
-    if (getDistance(this.cell,cell) <=4) {
-      var entities = partie.map.getEntitiesAround(cell, 3);
-      for (var i = 0; i < entities.length; i++) {
-        if (entities[i].faction == this.faction) {
-          entities[i].hp += this.magical_attack/2;
-          console.log(entities[i].name+ '(' + entities[i].faction +  ') : + ' + this.magical_attack + 'HP.');
+    var target = cell.entity;
+    if (target.targetable) {
+      if (this.ap >= 4) {
+        if (getDistance(this.cell,cell) <=4) {
+          var entities = partie.map.getEntitiesAround(cell, 3);
+          for (var i = 0; i < entities.length; i++) {
+            if (entities[i].faction == this.faction) {
+              addHP(entities[i], this.magical_attack/2);
+            }
+          }
+          this.ap -= 4;
         }
+        else {
+          console.log('La cible est trop éloignée.');
+        }
+      }
+      else {
+        console.log('Vous n\'avez pas assez de PA pour cette action.');
       }
     }
     else {
-      console.log('La cible est trop éloignée.');
+      console.log('Ceci n\'est pas une cible valide');
     }
   }.bind(this);
 
@@ -68,12 +85,17 @@ function heal(hp, ap, mp , init, name, faction, p_a, m_a) {
   this.spell4 = function(cell) {
     var target = cell.entity;
     if (target.targetable) {
-      if (getDistance(this.cell,target.cell) <=4) {
-        target.hp += this.magical_attack*2;
-        console.log(target.name+ '(' + target.faction +  ') : + ' + this.magical_attack*2 + ' HP.');
+      if (this.ap >= 6) {
+        if (getDistance(this.cell,target.cell) <=4) {
+          addHP(target, this.magical_attack*2);
+          this.ap -= 6;
+        }
+        else {
+          console.log('La cible est trop éloignée.');
+        }
       }
       else {
-        console.log('La cible est trop éloignée.');
+        console.log('Vous n\'avez pas assez de PA pour cette action.');
       }
     }
     else {

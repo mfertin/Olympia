@@ -22,3 +22,30 @@ function moveEntityToCell(entity, x, y) {
   cell.entity = entity;
   entity.cell = cell;
 }
+
+
+function damage(target, amount){
+  if (target.shield == 0) {
+    target.hp -= amount;
+  }
+  else {
+    if (target.shield > amount) {
+      target.shield -= amount;
+    }
+    else {
+      target.hp -= amount - target.shield;
+      target.shield = 0;
+    }
+  }
+}
+
+function addHP(target, amount){
+  if (target.hp != target.max_hp) {
+    if (target.hp + amount >= target.max_hp) {
+      target.hp = target.max_hp;
+    }
+    else {
+      target.hp += amount;
+    }
+  }
+}
