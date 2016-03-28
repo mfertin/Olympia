@@ -21,10 +21,10 @@ BasicGame.Boot.prototype =
         game.load.image('console', 'images/console.png');
 
         preloadbuttonarcher();
-        //preloadbuttonassassin();
-        //preloadbuttonmage();
-        //preloadbuttonsoigneur();
-        //preloadbuttontank();
+        preloadbuttonassassin();
+        preloadbuttonmage();
+        preloadbuttonsoigneur();
+        preloadbuttontank();
 
         game.load.spritesheet('characterAnim','images/sprite_3_4_avant_gauche.png', 70, 75);
 
@@ -53,13 +53,11 @@ BasicGame.Boot.prototype =
         tile = game.add.sprite(125, 475, 'tableaudebord');
         tile = game.add.sprite(616, 475, 'console');
 
-        createbuttonarcher();
+        createbuttonsort(1);
         //createbuttonassassin();
         //createbuttonmage();
         //createbuttonsoigneur();
         //createbuttontank();
-        button1.onInputOver.add(over, this);
-        button1.onInputOut.add(out, this);
         
         //tile.anchor.set(0.5, 0);
 
@@ -566,27 +564,55 @@ function preloadbuttonarcher() {
   game.load.image('sort4arch', 'images/Icone_sort/Archer/Archer4.png');
 }
 
-var button1;
 
-function createbuttonarcher() {
-  button1 = game.add.button(185, 478, 'sort1arch', this.sort1, this);
-  var button2 = game.add.button(290, 478, 'sort2arch', this.sort2, this);
-  var button3 = game.add.button(395, 478, 'sort3arch', this.sort3, this);
-  var button4 = game.add.button(500, 478, 'sort4arch', this.sort4, this);
+
+function createbuttonsort(x) {
+  var button1
+  var button2 
+  var button3
+  var button4
+  if (x==1) { //Archer
+    button1 = game.add.button(185, 478, 'sort1arch', this.sort1, this);
+    button2 = game.add.button(290, 478, 'sort2arch', this.sort2, this);
+    button3 = game.add.button(395, 478, 'sort3arch', this.sort3, this);
+    button4 = game.add.button(500, 478, 'sort4arch', this.sort4, this);
+  }
+  if (x==2) { //Mage
+    button1 = game.add.button(185, 478, 'sort1mag', this.sort1, this);
+    button2 = game.add.button(290, 478, 'sort2mag', this.sort2, this);
+    button3 = game.add.button(395, 478, 'sort3mag', this.sort3, this);
+    button4 = game.add.button(500, 478, 'sort4mag', this.sort4, this);
+  }
+  if (x==3) { //Assassin
+    button1 = game.add.button(185, 478, 'sort1ass', this.sort1, this);
+    button2 = game.add.button(290, 478, 'sort2ass', this.sort2, this);
+    button3 = game.add.button(395, 478, 'sort3ass', this.sort3, this);
+    button4 = game.add.button(500, 478, 'sort4ass', this.sort4, this);
+  }
+  if (x==4) { //Soigneur
+    button1 = game.add.button(185, 478, 'sort1soig', this.sort1, this);
+    button2 = game.add.button(290, 478, 'sort2soig', this.sort2, this);
+    button3 = game.add.button(395, 478, 'sort3soig', this.sort3, this);
+    button4 = game.add.button(500, 478, 'sort4soig', this.sort4, this);
+  }
+  if (x==5) { //Tank
+    button1 = game.add.button(185, 478, 'sort1tan', this.sort1, this);
+    button2 = game.add.button(290, 478, 'sort2tan', this.sort2, this);
+    button3 = game.add.button(395, 478, 'sort3tan', this.sort3, this);
+    button4 = game.add.button(500, 478, 'sort4tan', this.sort4, this);
+  }
+
+  button1.onInputOver.add(over, this);
+  button1.onInputOut.add(out, this);
 }
+
+
 
 function preloadbuttonmage() {
   game.load.image('sort1mag', 'images/Icone_sort/Mage/Mage1.png');
   game.load.image('sort2mag', 'images/Icone_sort/Mage/Mage2.png');
   game.load.image('sort3mag', 'images/Icone_sort/Mage/Mage3.png');
   game.load.image('sort4mag', 'images/Icone_sort/Mage/Mage4.png');
-}
-
-function createbuttonmage() {
-  game.add.button(185, 478, 'sort1mag', this.sort1, this);
-  game.add.button(290, 478, 'sort2mag', this.sort2, this);
-  game.add.button(395, 478, 'sort3mag', this.sort3, this);
-  game.add.button(500, 478, 'sort4mag', this.sort4, this);
 }
 
 function preloadbuttonassassin() {
@@ -596,25 +622,11 @@ function preloadbuttonassassin() {
   game.load.image('sort4ass', 'images/Icone_sort/Assassin/Assassin4.png');
 }
 
-function createbuttonassassin() {
-  game.add.button(185, 478, 'sort1ass', this.sort1, this);
-  game.add.button(290, 478, 'sort2ass', this.sort2, this);
-  game.add.button(395, 478, 'sort3ass', this.sort3, this);
-  game.add.button(500, 478, 'sort4ass', this.sort4, this);
-}
-
 function preloadbuttonsoigneur() {
   game.load.image('sort1soig', 'images/Icone_sort/Soigneur/Soigneur1.png');
   game.load.image('sort2soig', 'images/Icone_sort/Soigneur/Soigneur2.png');
   game.load.image('sort3soig', 'images/Icone_sort/Soigneur/Soigneur3.png');
   game.load.image('sort4soig', 'images/Icone_sort/Soigneur/Soigneur4.png');
-}
-
-function createbuttonsoigneur() {
-  game.add.button(185, 478, 'sort1soig', this.sort1, this);
-  game.add.button(290, 478, 'sort2soig', this.sort2, this);
-  game.add.button(395, 478, 'sort3soig', this.sort3, this);
-  game.add.button(500, 478, 'sort4soig', this.sort4, this);
 }
 
 function preloadbuttontank() {
@@ -623,22 +635,14 @@ function preloadbuttontank() {
   game.load.image('sort3tan', 'images/Icone_sort/Tank/Tank3.png');
   game.load.image('sort4tan', 'images/Icone_sort/Tank/Tank4.png');
 }
-
-function createbuttontank() {
-  game.add.button(185, 478, 'sort1tan', this.sort1, this);
-  game.add.button(290, 478, 'sort2tan', this.sort2, this);
-  game.add.button(395, 478, 'sort3tan', this.sort3, this);
-  game.add.button(500, 478, 'sort4tan', this.sort4, this);
-}
-
-var text;
+var text_affich;
 
 function over(){
-   text = game.add.text(616, 475, "Description sort1", { font: "20px Arial", fill: "#ffffff"});
+    text_affich = game.add.text(616, 475, "description", { font: "20px Arial", fill: "#ffffff"});
 }
 
 function out(){
-  text.destroy();
+  text_affich.destroy();
 }
 
 game.state.add('Boot', BasicGame.Boot);
