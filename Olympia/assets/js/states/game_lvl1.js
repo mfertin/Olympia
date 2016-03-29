@@ -5,8 +5,10 @@ var Niveau1 = {
 	},
 
 	create: function(){
-		this.background = this.game.add.sprite(0, 0, 'background');
-		this.add.button(400, 300, 'options', gagner, this);
+		//this.background = this.game.add.sprite(0, 0, 'background');
+		//this.add.button(400, 300, 'options', gagner, this);
+		game.state.add('Boot', BasicGame.Boot);
+		game.state.start('Boot');
 
 		function gagner(){
 			level2 = true;
