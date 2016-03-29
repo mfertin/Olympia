@@ -8,7 +8,9 @@ function character(hp, ap, mp , init, name, faction, p_a, m_a){
 	this.faction = faction;//Contient la faction du personnage.
 	this.physical_attack = p_a;//Attaque physique du personnage.
 	this.magical_attack = m_a;//Attaque magique du personnage.
-	this.burning = 0;
-	this.shield = 0;
+	this.burning = [0, 0];//[0] -> Nombre de tours d'effet.  /  [1] −> Dégats infligés à chaque coup.
+	this.poison = [0, 0];//[0] -> Nombre de tours d'effet.  /  [1] −> Dégats infligés à chaque coup.
+	this.block = false;//Indique si le prochain coup doit être paré ou non.
+	this.shield = 0;//Montant du bouclier.
 	entity.call(this, true);
 }

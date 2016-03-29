@@ -12,24 +12,41 @@
   <script type="text/javascript" src="assets/js/classes/entity.js"></script>
   <script type="text/javascript" src="assets/js/classes/character.js"></script>
 	<script type="text/javascript" src="assets/js/classes/magus.js"></script>
-	<script type="text/javascript" src="assets/js/classes/functions.js"></script>
 	<script type="text/javascript" src="assets/js/classes/heal.js"></script>
+	<script type="text/javascript" src="assets/js/classes/tank.js"></script>
+	<script type="text/javascript" src="assets/js/classes/assassin.js"></script>
+	<script type="text/javascript" src="assets/js/classes/archer.js"></script>
+	<script type="text/javascript" src="assets/js/classes/functions.js"></script>
 
 	<script type="text/javascript">
 
-		var partie = new game('Onyzer', 'Grec');
+		var partie = new game('Joueur', 'Grec', 15, 15); //Créé une partie (un niveau) avec le nom de notre joueur, sa faction et la taille de la map.
+		//On créé un personnage de chaque classe avec beaucoup de points de vie et d'action pour pouvoir effectuer nos tests à la suite.
+		//Ne pas hésiter à aller voir le fichier character.js pour savoir à quoi correspondent les arguments.
+		var magus = new magus(1000, 50, 3, 100, 'Onyzer', 'PGM', 10, 50);
+		var heal = new heal(1000, 50, 3, 100, 'pierrealexyop$w4g', 'Noob', 10, 50);
+		var tank = new tank(1000, 50, 3, 100, 'matcoc', 'Noob', 10, 50);
+		var archer = new archer(1000, 50, 3, 100, 'neirda', 'Noob', 10, 50);
+		var assassin = new assassin(1000, 50, 3, 100, 'Anyone', 'PGM', 10, 50)
 
-		partie.map = new map(15, 15);
+		//On place nos personnages sur la carte pour pouvoir effectuer nos tests.
+		moveEntityToCell(magus, 2, 3);
+		moveEntityToCell(heal, 3, 3);
+		moveEntityToCell(tank, 3, 4);
+		moveEntityToCell(archer, 3, 5);
+		moveEntityToCell(assassin, 4, 5);
 
-		var Onyzer = new magus(100, 6, 3, 100, 'Onyzer', 'PGM', 10, 50);
-		var PA = new heal(100, 6, 3, 100, 'pierrealexyop$w4g', 'Noob', 10, 50);
-		var Mathieu = new magus(100, 6, 3, 100, 'matcoc', 'Noob', 10, 50);
-		var Adrien = new magus(100, 6, 3, 100, 'neirda', 'Noob', 10, 50);
-		moveEntityToCell(Onyzer, 2, 3);
-		moveEntityToCell(PA, 3, 3);
-		moveEntityToCell(Mathieu, 3, 4);
-		moveEntityToCell(Adrien, 3, 5);
-		Onyzer.spells[3](partie.map.getCellByCoordinates(3,5));
-		PA.spells[1](partie.map.getCellByCoordinates(3,5));
+		//On appelle les sorts avec une cellule car plus tard on récupèrera au clic du joueur la cellule ciblée.
+
+		/* Faire l'appel des sorts pour démonstration */
+
+
+
+		//On affiche l'état de nos personnages (seulement ceux qui nous intéressent pour la démonstration en cours)
+		console.log(magus);
+		console.log(heal);
+		console.log(tank);
+		console.log(archer);
+		console.log(assassin);
   </script>
 </body>
