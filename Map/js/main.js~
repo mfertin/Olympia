@@ -10,7 +10,7 @@ BasicGame.Boot.prototype =
 {
     preload: function () {
 
-	game.load.image('fond', 'images/fond.png');
+	game.load.image('fond', 'images/fond.jpg');
         /*game.load.tilemap('map-lvl1', '/images/map-lvl1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'images/tmw_desert_spacing.png');*/
 
