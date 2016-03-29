@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Olympia</title>
+</head>
+<body>
+  <script type="text/javascript" src="assets/js/classes/game.js"></script>
+  <script type="text/javascript" src="assets/js/classes/level.js"></script>
+  <script type="text/javascript" src="assets/js/classes/cell.js"></script>
+	<script type="text/javascript" src="assets/js/classes/map.js"></script>
+  <script type="text/javascript" src="assets/js/classes/entity.js"></script>
+  <script type="text/javascript" src="assets/js/classes/character.js"></script>
+	<script type="text/javascript" src="assets/js/classes/magus.js"></script>
+	<script type="text/javascript" src="assets/js/classes/functions.js"></script>
+	<script type="text/javascript" src="assets/js/classes/heal.js"></script>
+
+	<script type="text/javascript">
+
+		var partie = new game('Onyzer', 'Grec');
+
+		partie.map = new map(15, 15);
+
+		var Onyzer = new magus(100, 6, 3, 100, 'Onyzer', 'PGM', 10, 50);
+		var PA = new heal(100, 6, 3, 100, 'pierrealexyop$w4g', 'Noob', 10, 50);
+		var Mathieu = new magus(100, 6, 3, 100, 'matcoc', 'Noob', 10, 50);
+		var Adrien = new magus(100, 6, 3, 100, 'neirda', 'Noob', 10, 50);
+		moveEntityToCell(Onyzer, 2, 3);
+		moveEntityToCell(PA, 3, 3);
+		moveEntityToCell(Mathieu, 3, 4);
+		moveEntityToCell(Adrien, 3, 5);
+		Onyzer.spells[3](partie.map.getCellByCoordinates(3,5));
+		PA.spells[1](partie.map.getCellByCoordinates(3,5));
+  </script>
+</body>

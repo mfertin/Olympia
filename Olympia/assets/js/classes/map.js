@@ -2,7 +2,6 @@ function map(x, y) {
   this.cells = new Array();//Tableau contenant la liste des cellules de la map.
   this.xSize = x;
   this.ySize = y;
-  this.image;//Contient l'image de la map.
   this.initCells = function(x, y) {
     for (var i = 1; i <= x ; i++) {
       for (var j = 1; j <= y; j++) {

@@ -19,11 +19,16 @@ var Scenario = {
 			this.background = this.game.add.sprite(0, 0, 'backgroundne');
 		}
 
-		this.add.button(20, 582, 'retour', backv, this); //à retirer
-		this.add.button(419, 570, 'commencer', this.Commencer, this);
+		//this.add.button(20, 582, 'retour', backv, this); //à retirer
+		this.add.button(419, 570, 'commencer', commencer, this);
 
-		function backv(){
+		/*function backv(){
 			game.state.start('Valid'); //à retirer
+		}*/
+
+		function commencer(){
+			level1 = true;
+			game.state.start('Niveaux');
 		}
 	},
 
