@@ -23,11 +23,11 @@
 		var partie = new game('Joueur', 'Grec', 15, 15); //Créé une partie (un niveau) avec le nom de notre joueur, sa faction et la taille de la map.
 		//On créé un personnage de chaque classe avec beaucoup de points de vie et d'action pour pouvoir effectuer nos tests à la suite.
 		//Ne pas hésiter à aller voir le fichier character.js pour savoir à quoi correspondent les arguments.
-		var magus = new magus(1000, 50, 3, 100, 'Onyzer', 'PGM', 10, 50);
-		var heal = new heal(1000, 50, 3, 100, 'pierrealexyop$w4g', 'Noob', 10, 50);
-		var tank = new tank(1000, 50, 3, 100, 'matcoc', 'Noob', 10, 50);
-		var archer = new archer(1000, 50, 3, 100, 'neirda', 'Noob', 10, 50);
-		var assassin = new assassin(1000, 50, 3, 100, 'Anyone', 'PGM', 10, 50)
+		var magus = new magus(1000, 50, 3, 100, 'Osiris', 'Bleu', 10, 50);
+		var heal = new heal(1000, 50, 3, 100, 'Athena', 'Rouge', 10, 50);
+		var tank = new tank(1000, 50, 3, 100, 'Poseidon', 'Rouge', 10, 50);
+		var archer = new archer(1000, 50, 3, 100, 'Apollon', 'Rouge', 10, 50);
+		var assassin = new assassin(1000, 50, 3, 100, 'Seth', 'Bleu', 10, 50)
 
 		//On place nos personnages sur la carte pour pouvoir effectuer nos tests.
 		moveEntityToCell(magus, 2, 3);
@@ -39,14 +39,21 @@
 		//On appelle les sorts avec une cellule car plus tard on récupèrera au clic du joueur la cellule ciblée.
 
 		/* Faire l'appel des sorts pour démonstration */
+		console.log("Attaque ciblé de l'assassin sur le tank: ");
 
+		assassin.spells[1](3,4);
 
 
 		//On affiche l'état de nos personnages (seulement ceux qui nous intéressent pour la démonstration en cours)
-		console.log(magus);
-		console.log(heal);
-		console.log(tank);
-		console.log(archer);
 		console.log(assassin);
+
+		console.log("Attaque de l'assassin sur l'archer: ");
+		assassin.spells[2](3,5);
+
+		console.log("Guérison de zone du heal sur l'archer et sur le tank: ");
+		heal.spells[3](3,4);
+
+		
+
   </script>
 </body>

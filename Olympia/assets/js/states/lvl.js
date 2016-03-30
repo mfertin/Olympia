@@ -8,7 +8,7 @@ BasicGame.Boot.prototype =
 {
     preload: function () {
 
-	game.load.image('fond', 'assets/images/fond.png');
+	   game.load.image('fond', 'assets/images/fond.png');
         /*game.load.tilemap('map-lvl1', '/assets/images/map-lvl1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'assets/images/tmw_desert_spacing.png');*/
 
@@ -19,6 +19,7 @@ BasicGame.Boot.prototype =
         game.load.image('tableaudebordvie', 'assets/images/tableaudebordvie.png');
         game.load.image('tableaudebord', 'assets/images/tableaudebordprincipal.png');
         game.load.image('console', 'assets/images/console.png');
+        game.load.image('valider', 'assets/images/valider.png');
 
         preloadbuttonarcher();
         preloadbuttonassassin();
@@ -40,6 +41,14 @@ BasicGame.Boot.prototype =
 
     },
     create: function () {
+
+    
+
+    function gagner(){
+      level2 = true;
+      game.state.start('Niveaux');
+    }
+    
 	game.add.tileSprite(0, 0, 1000, 625, 'fond');
         // Create a group for our tiles.
         isoGroup = game.add.group();
@@ -66,6 +75,7 @@ BasicGame.Boot.prototype =
 
         // Provide a 3D position for the cursor
         cursorPos = new Phaser.Plugin.Isometric.Point3();
+        this.add.button(800, 50, 'valider', gagner, this);
     },
     update: function () {
         // Update the cursor position.
