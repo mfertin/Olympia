@@ -2,6 +2,11 @@ function assassin(hp, ap, mp , init, name, faction, p_a, m_a) {
 
   character.call(this, hp, ap, mp , init, name, faction, p_a, m_a);
 
+  this.spells_descriptions = ["Attaque basique infligeant [physical_attack] dégats\nPortée : 3\nCoût : 3 AP",
+                              "Inflige  un poison sur 2 tours de [physical_attack/2] dégats par tour.\nPortée : 6\nCoût : 4 AP",
+                              "Inflige [physical_attack / 2] dégats à la cible et le lanceur régenère le même montant d'HP\nPortée : 4\nCoût : 4 AP",
+                              "Inflige [physical_attack * 2] dégats à la cible et le lanceur gagne un MP pour ce tour.\nPortée : 4\nCoût : 6 AP"];
+
   /*Zone/Monocible : Monocible
     Portée : 3
     Coût en AP : 3

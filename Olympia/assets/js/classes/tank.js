@@ -2,6 +2,11 @@ function tank(hp, ap, mp , init, name, faction, p_a, m_a) {
 
   character.call(this, hp, ap, mp , init, name, faction, p_a, m_a);
 
+  this.spells_descriptions = ["Attaque basique infligeant [physical_attack] dégats\nPortée : 3\nCoût : 3 AP",
+                              "Vous confère un bouclier de 50 mais vous retire 10 physical_attack\nPortée 0: \nCoût : 4 AP",
+                              "Confère à vous et vos alliers à une distance de 3 ou moins un bouclier de [magical_attack]\nPortée : 0\nCoût : 4 AP",
+                              "Vous bloquerez le prochain sort\nPortée : 0\nCoût : 6 AP"];
+
   /*Zone/Monocible : Monocible
     Portée : 3
     Coût en AP : 3

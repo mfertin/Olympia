@@ -2,36 +2,44 @@ function archer(hp, ap, mp , init, name, faction, p_a, m_a) {
 
   character.call(this, hp, ap, mp , init, name, faction, p_a, m_a);
 
-  /*Zone/Monocible : Monocible
-    Portée : 3
-    Coût en AP : 3
-    Effet : Inflige [physical_attack] dégats à la cible.*/
-  this.spell1 = function(cell) {
-    var target = cell.entity;
-    if (target.targetable) {
-      if (this.ap >= 3) {
-        if (getDistance(this.cell,cell) <=3) {
-          if(target.block != true){
-            damage(target, this.physical_attack);
+  this.spells_descriptions = ["Attaque basique infligeant [physical_attack] dégats\nPortée : 3\nCoût : 3 AP",
+                              "Tire une flèche longue distance qui inflige [physical_attack] dégats à la cible\nPortée : 6\nCoût : 4 AP",
+                              "Tire une flèche envoutante qui inflige [physical_attack] dégats à la cible\nPortée : 5\nCoût : 4 AP",
+                              "Tire une flèche enflammée qui inflige [physical_attack] dégats à la cible et la brûle pendant 3 tours à [magical_attack * 2] dégats par tour\nPortée : 4\nCoût : 6 AP"];
+
+
+
+    /*Zone/Monocible : Monocible
+      Portée : 3
+      Coût en AP : 3
+      Effet : Inflige [physical_attack] dégats à la cible.*/
+    this.spell1 = function(cell) {
+      var target = cell.entity;
+      if (target.targetable) {
+        if (this.ap >= 3) {
+          if (getDistance(this.cell,cell) <=3) {
+            if(target.block != true){
+              damage(target, this.physical_attack);
+            }
+            else {
+              console.log('L\'adversaire pare votre attaque.');
+              target.block = false;
+            }
+            this.ap -= 3;
           }
           else {
-            console.log('L\'adversaire pare votre attaque.');
-            target.block = false;
+            console.log('La cible est trop éloignée.');
           }
-          this.ap -= 3;
         }
         else {
-          console.log('La cible est trop éloignée.');
+          console.log('Vous n\'avez pas assez de PA pour cette action.');
         }
       }
       else {
-        console.log('Vous n\'avez pas assez de PA pour cette action.');
+        console.log('Ceci n\'est pas une cible valide');
       }
-    }
-    else {
-      console.log('Ceci n\'est pas une cible valide');
-    }
-  }.bind(this);
+    }.bind(this);
+
 
   /*Zone/Monocible : Monocible
     Portée : 6

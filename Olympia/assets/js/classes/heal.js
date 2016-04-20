@@ -2,6 +2,11 @@ function heal(hp, ap, mp , init, name, faction, p_a, m_a) {
 
   character.call(this, hp, ap, mp , init, name, faction, p_a, m_a);
 
+  this.spells_descriptions = ["Attaque basique infligeant [physical_attack] dégats\nPortée : 3\nCoût : 3 AP",
+                              "Soigne la cible de [magical_attack] HP mais le lanceur reçoit [magical_attack / 2] dégats.\nPortée : 4\nCoût : 4 AP",
+                              "Soigne de [magical_attack] tous les alliés dans la zone de 4 autour de la celulle ciblée.\nPortée : 4\nCoût : 4 AP",
+                              "Soigne de [magical_attack * 2] la cible.\nPortée : 4\nCoût : 6 AP"];
+
   /*Zone/Monocible : Monocible
     Portée : 3
     Coût en AP : 3

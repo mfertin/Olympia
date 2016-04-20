@@ -2,6 +2,11 @@ function magus(hp, ap, mp , init, name, faction, p_a, m_a) {
 
   character.call(this, hp, ap, mp , init, name, faction, p_a, m_a);
 
+  this.spells_descriptions = ["Attaque basique infligeant [physical_attack] dégats\nPortée : 3\nCoût : 3 AP",
+                              "Inflige 10 dégats à la cible et lui retire 1 MP et 2 AP pour son prochain tour.\nPortée : 4\nCoût : 4 AP",
+                              "Inflige [magical_attack] à tous les ennemis compris dans une zone de 4 autour de la celulle cible.\nPortée : 4\nCoût : 4 AP",
+                              "Inflige [magical_attack * 2] dégats à la cible et le brûle pendant 3 tours à hauteur de [magical_attack / 2] dégats par tour.\nPortée : 4\nCoût : 6 AP"];
+
   /*Zone/Monocible : Monocible
     Portée : 3
     Coût en AP : 3
