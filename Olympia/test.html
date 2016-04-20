@@ -34,24 +34,36 @@
 		moveEntityToCell(heal, 3, 3);
 		moveEntityToCell(tank, 3, 4);
 		moveEntityToCell(archer, 3, 5);
-		moveEntityToCell(assassin, 4, 5);
+		moveEntityToCell(assassin, 6, 6);
 
 		//On appelle les sorts avec une cellule car plus tard on récupèrera au clic du joueur la cellule ciblée.
 
 		/* Faire l'appel des sorts pour démonstration */
 		console.log("Attaque ciblé de l'assassin sur le tank: ");
 
-		assassin.spells[1](3,4);
-
+		assassin.spells[0](partie.map.getCellByCoordinates(3,4));
 
 		//On affiche l'état de nos personnages (seulement ceux qui nous intéressent pour la démonstration en cours)
 		console.log(assassin);
+		console.log(tank);
 
-		console.log("Attaque de l'assassin sur l'archer: ");
-		assassin.spells[2](3,5);
+		console.log("Attaque ciblé de l'assassin sur le tank: ");
+
+		moveEntityToCell(assassin, 4, 4);
+		assassin.spells[0](partie.map.getCellByCoordinates(3,4));
+
+		console.log(assassin);
+		console.log(tank);
+
+		console.log("Attaque ciblé de l'assassin sur l'archer: ");
+		assassin.spells[2](partie.map.getCellByCoordinates(3,5));
+		console.log(assassin);
+		console.log(archer);
 
 		console.log("Guérison de zone du heal sur l'archer et sur le tank: ");
-		heal.spells[3](3,4);
+		heal.spells[2](partie.map.getCellByCoordinates(3,5));
+		console.log(tank);
+		console.log(archer);
 
 		
 

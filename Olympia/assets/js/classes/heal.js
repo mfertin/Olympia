@@ -83,7 +83,6 @@ function heal(hp, ap, mp , init, name, faction, p_a, m_a) {
           this.ap -= 4;
         }
         else {
-          console.log('test');
           console.log('La cible est trop éloignée.');
         }
       }
