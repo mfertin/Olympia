@@ -16,9 +16,10 @@ BasicGame.Boot.prototype =
         game.load.image('grass', 'images/grass-reduce.png');
         game.load.image('sand', 'images/sand-reduce.png');
         game.load.image('water', 'images/water-reduce.png');
+        game.load.image('posseidon', 'images/Posseidon.png');
         game.load.image('rouge', 'images/rouge.png');
 
-        game.load.spritesheet('characterAnim','images/sprite_3_4_avant_gauche.png', 70, 75);
+        //game.load.spritesheet('characterAnim','images/sprite_3_4_avant_gauche.png', 70, 75);
 
         game.time.advancedTiming = true;
 
@@ -46,6 +47,13 @@ BasicGame.Boot.prototype =
         // Let's make a load of tiles on a grid.
         this.spawnTiles();
 
+        //Creste the player
+        var xpos, ypos;
+        xpos = 0;
+        ypos = 0;
+        player = game.add.isoSprite(xpos+15*22.5, ypos+15*22.5, 0, 'posseidon', 0, obstacleGroup);
+          player.anchor.setTo(0.5);
+
         // Provide a 3D position for the cursor
         cursorPos = new Phaser.Plugin.Isometric.Point3();
     },
@@ -54,30 +62,11 @@ BasicGame.Boot.prototype =
         // It's important to understand that screen-to-isometric projection means you have to specify a z position manually, as this cannot be easily
         // determined from the 2D pointer position without extra trickery. By default, the z position is 0 if not set.
         game.iso.unproject(game.input.activePointer.position, cursorPos);
-
-        // Loop through all tiles and test to see if the 3D position from above intersects with the automatically generated IsoSprite tile bounds.
-        isoGroup.forEach(function (tile) {
-            var inBounds = tile.isoBounds.containsXY(cursorPos.x, cursorPos.y);
-            // If it does, do a little animation and tint change.
-            if (!tile.selected && inBounds) {
-                tile.selected = true;
-                tile.tint = 0xff1e22;
-                game.add.tween(tile).to({ isoZ: 4 }, 200, Phaser.Easing.Quadratic.InOut, true);
-            }
-            // If not, revert back to how it was.
-            else if (tile.selected && !inBounds) {
-                tile.selected = false;
-                tile.tint = 0xffffff;
-                game.add.tween(tile).to({ isoZ: 0 }, 200, Phaser.Easing.Quadratic.InOut, true);
-            }
-        });
-        //Creste the player
-        player = game.add.isoSprite(350, 280, 0, 'characterAnim', 0, obstacleGroup);
-    },
-    /*render: function () {
+      },
+      render: function () {
         game.debug.text("Move your mouse around!", 2, 36, "#ffffff");
-        game.debug.text(game.time.fps || '--', 2, 14, "#a7aebe");
-    },*/
+        game.debug.text(tile.containsXY(cursorPos.x, cursorPos.y) , 2, 14, "#a7aebe");
+    },
     spawnTiles: function () {
         var tile;
         //ligne 1 ( yy = 0 )
